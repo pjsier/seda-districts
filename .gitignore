@@ -1,0 +1,13 @@
+input/elementary/*
+input/unified/*
+filtered/*
+!filtered/.keep
+districts/*
+!districts/.keep
+combined/*
+!combined/.keep
+transformed/*
+!transformed/.keep
+.vscode
+.DS_Store
+.venv
