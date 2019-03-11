@@ -1,0 +1,3 @@
+# SEDA Districts
+
+`make all`

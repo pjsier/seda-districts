@@ -1,4 +1,3 @@
-import csv
 import json
 import os
 import sys
@@ -6,19 +5,11 @@ import sys
 from shapely.geometry import mapping, shape
 from shapely.ops import cascaded_union
 
-with open(
-    os.path.join(os.path.dirname(os.path.dirname(__file__)),
-    "input",
-    "ny-district-ids.csv"
-), "r") as f:
-    ny_dist_ids = [r[0] for r in csv.reader(f)][1:]
-
 # TODO: Add name as last item in tuple?
 COMBINE_DISTRICTS = (
     (['4700147', '4700148', '4702940'], '470290'),
     (['0601414', '0635370'], '0635370'),
     (['4800054', '4800073', '4800091', '4800117', '4800128', '4800209', '4833060'], '4833060'),
-    (ny_dist_ids, '3620580'),
 )
 
 DISTRICTS_TO_COMBINE = []
@@ -47,8 +38,6 @@ if __name__ == '__main__':
             in features_to_combine
             if feat['properties']['GEOID'] in input_geoids
         ]
-        # print(f"# input GEOIDs {len(input_geoids)} # input districts {len(input_districts)}")
-        # Combine
         combined_districts.append({
             'type': 'Feature',
             'properties': {
